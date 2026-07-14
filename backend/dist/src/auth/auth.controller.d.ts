@@ -1,6 +1,14 @@
+import type { Request } from 'express';
 import { CreateUserDto } from '../users/dto/create-user.dto.js';
 import { AuthService } from './auth.service.js';
 import { LoginDto } from './dto/login.dto.js';
+type AuthenticatedRequest = Request & {
+    user: {
+        sub: number;
+        email: string;
+        role: 'ADMIN' | 'STAFF';
+    };
+};
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
@@ -24,4 +32,21 @@ export declare class AuthController {
             active: boolean;
         };
     }>;
+    getProfile(request: AuthenticatedRequest): {
+        message: string;
+        user: {
+            sub: number;
+            email: string;
+            role: "ADMIN" | "STAFF";
+        };
+    };
+    getAdminTest(request: AuthenticatedRequest): {
+        message: string;
+        user: {
+            sub: number;
+            email: string;
+            role: "ADMIN" | "STAFF";
+        };
+    };
 }
+export {};

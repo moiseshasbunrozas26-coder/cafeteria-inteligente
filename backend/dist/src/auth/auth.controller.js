@@ -10,10 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Body, Controller, HttpCode, HttpStatus, Post, } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, UseGuards, } from '@nestjs/common';
 import { CreateUserDto } from '../users/dto/create-user.dto.js';
 import { AuthService } from './auth.service.js';
+import { Roles } from './decorators/roles.decorator.js';
 import { LoginDto } from './dto/login.dto.js';
+import { AuthGuard } from './guards/auth.guard.js';
+import { RolesGuard } from './guards/roles.guard.js';
 let AuthController = class AuthController {
     authService;
     constructor(authService) {
@@ -24,6 +27,18 @@ let AuthController = class AuthController {
     }
     login(dto) {
         return this.authService.login(dto);
+    }
+    getProfile(request) {
+        return {
+            message: 'Acceso autorizado',
+            user: request.user,
+        };
+    }
+    getAdminTest(request) {
+        return {
+            message: 'Acceso de administrador autorizado',
+            user: request.user,
+        };
     }
 };
 __decorate([
@@ -41,6 +56,23 @@ __decorate([
     __metadata("design:paramtypes", [LoginDto]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "login", null);
+__decorate([
+    Get('profile'),
+    UseGuards(AuthGuard),
+    __param(0, Req()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "getProfile", null);
+__decorate([
+    Get('admin-test'),
+    UseGuards(AuthGuard, RolesGuard),
+    Roles('ADMIN'),
+    __param(0, Req()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "getAdminTest", null);
 AuthController = __decorate([
     Controller('auth'),
     __metadata("design:paramtypes", [AuthService])
