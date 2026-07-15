@@ -1,16 +1,13 @@
 import {
-  Body,
   Controller,
   Get,
   Param,
   ParseIntPipe,
-  Patch,
   UseGuards,
 } from '@nestjs/common';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { AuthGuard } from '../auth/guards/auth.guard.js';
 import { RolesGuard } from '../auth/guards/roles.guard.js';
-import { UpdateUserDto } from './dto/update-user.dto.js';
 import { UsersService } from './users.service.js';
 
 @Controller('users')
@@ -24,7 +21,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get(':id')
+    @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.findOne(id);
   }

@@ -6,11 +6,12 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import type { Request } from 'express';
+import { UsersService } from '../../users/users.service.js';
 
 type JwtPayload = {
   sub: number;
   email: string;
-  role: string;
+  role: 'ADMIN' | 'STAFF';
 };
 
 type AuthenticatedRequest = Request & {
@@ -19,7 +20,10 @@ type AuthenticatedRequest = Request & {
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private readonly jwtService: JwtService) {}
+  constructor(
+    private readonly jwtService: JwtService,
+    private readonly usersService: UsersService,
+  ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request =
@@ -33,16 +37,31 @@ export class AuthGuard implements CanActivate {
       );
     }
 
-    try {
-      const payload =
-        await this.jwtService.verifyAsync<JwtPayload>(token);
+    let payload: JwtPayload;
 
-      request.user = payload;
+    try {
+      payload =
+        await this.jwtService.verifyAsync<JwtPayload>(token);
     } catch {
       throw new UnauthorizedException(
         'El token es inválido o ha expirado.',
       );
     }
+
+    const currentUser =
+      await this.usersService.findForAuth(payload.sub);
+
+    if (!currentUser || !currentUser.active) {
+      throw new UnauthorizedException(
+        'La cuenta está desactivada o ya no existe.',
+      );
+    }
+
+    request.user = {
+      sub: currentUser.id,
+      email: currentUser.email,
+      role: currentUser.role,
+    };
 
     return true;
   }
