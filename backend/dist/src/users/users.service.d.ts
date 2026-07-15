@@ -21,4 +21,13 @@ export declare class UsersService {
         createdAt: Date;
         updatedAt: Date;
     } | null>;
+    findAll(): Promise<{
+        name: string;
+        email: string;
+        id: number;
+        role: import("../generated/prisma/enums.js").Role;
+        active: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }[]>;
 }
