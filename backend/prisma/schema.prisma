@@ -26,6 +26,12 @@ enum MovementType {
   ADJUSTMENT
 }
 
+enum SaleStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
 model User {
   id           Int      @id @default(autoincrement())
   name         String
@@ -54,6 +60,7 @@ model Product {
   categoryId  Int?
   category    Category?           @relation(fields: [categoryId], references: [id])
   ingredients ProductIngredient[]
+  saleItems   SaleItem[]
   createdAt   DateTime            @default(now())
   updatedAt   DateTime            @updatedAt
 }
@@ -90,4 +97,27 @@ model InventoryMovement {
   reason       String?
   ingredient   Ingredient   @relation(fields: [ingredientId], references: [id])
   createdAt    DateTime     @default(now())
+}
+
+model Sale {
+  id        Int        @id @default(autoincrement())
+  status    SaleStatus @default(PENDING)
+  total     Decimal    @default(0) @db.Decimal(12, 2)
+  items     SaleItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model SaleItem {
+  id        Int     @id @default(autoincrement())
+  saleId    Int
+  productId Int
+  quantity  Int
+  unitPrice Decimal @db.Decimal(10, 2)
+  subtotal  Decimal @db.Decimal(12, 2)
+  sale      Sale    @relation(fields: [saleId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@index([saleId])
+  @@index([productId])
 }
