@@ -11,6 +11,7 @@ import { RecipesModule } from './recipes/recipes.module.js';
 import { UsersModule } from './users/users.module.js';
 import { InventoryMovementsModule } from './inventory-movements/inventory-movements.module.js';
 import { SalesModule } from './sales/sales.module.js';
+import { TablesModule } from './tables/tables.module.js';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { SalesModule } from './sales/sales.module.js';
     RecipesModule,
     InventoryMovementsModule,
     SalesModule,
+    TablesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
