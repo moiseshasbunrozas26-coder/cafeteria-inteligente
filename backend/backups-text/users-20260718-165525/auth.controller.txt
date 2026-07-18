@@ -26,16 +26,10 @@ type AuthenticatedRequest = Request & {
 
 @Controller('auth')
 export class AuthController {
-  constructor(
-    private readonly authService: AuthService,
-  ) {}
+  constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  @UseGuards(AuthGuard, RolesGuard)
-  @Roles('ADMIN')
-  register(
-    @Body() dto: CreateUserDto,
-  ) {
+  register(@Body() dto: CreateUserDto) {
     return this.authService.register(dto);
   }
 
@@ -47,9 +41,7 @@ export class AuthController {
 
   @Get('profile')
   @UseGuards(AuthGuard)
-  getProfile(
-    @Req() request: AuthenticatedRequest,
-  ) {
+  getProfile(@Req() request: AuthenticatedRequest) {
     return {
       message: 'Acceso autorizado',
       user: request.user,
@@ -59,12 +51,9 @@ export class AuthController {
   @Get('admin-test')
   @UseGuards(AuthGuard, RolesGuard)
   @Roles('ADMIN')
-  getAdminTest(
-    @Req() request: AuthenticatedRequest,
-  ) {
+  getAdminTest(@Req() request: AuthenticatedRequest) {
     return {
-      message:
-        'Acceso de administrador autorizado',
+      message: 'Acceso de administrador autorizado',
       user: request.user,
     };
   }

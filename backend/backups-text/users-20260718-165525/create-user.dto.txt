@@ -1,7 +1,5 @@
 import {
   IsEmail,
-  IsIn,
-  IsOptional,
   IsString,
   MaxLength,
   MinLength,
@@ -21,10 +19,4 @@ export class CreateUserDto {
   @MinLength(8)
   @MaxLength(72)
   password!: string;
-
-  @IsOptional()
-  @IsIn(['ADMIN', 'STAFF'], {
-    message: 'El rol debe ser ADMIN o STAFF.',
-  })
-  role?: 'ADMIN' | 'STAFF';
 }

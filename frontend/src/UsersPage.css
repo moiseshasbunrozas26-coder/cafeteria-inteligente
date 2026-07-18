@@ -1,0 +1,341 @@
+.users-page-message {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid;
+  border-radius: 12px;
+}
+
+.users-page-success {
+  color: #176b3a;
+  background: #ecfdf3;
+  border-color: #abefc6;
+}
+
+.users-page-error {
+  color: #b42318;
+  background: #fef3f2;
+  border-color: #fecdca;
+}
+
+.users-page-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.users-page-summary-card {
+  display: grid;
+  gap: 7px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e6e9e7;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(31, 43, 36, 0.04);
+}
+
+.users-page-summary-card span {
+  color: #667085;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.users-page-summary-card strong {
+  color: #223029;
+  font-size: 26px;
+}
+
+.users-page-summary-card small {
+  color: #818b85;
+}
+
+.users-page-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 370px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.users-page-form-panel {
+  position: sticky;
+  top: 24px;
+}
+
+.users-page-form {
+  display: grid;
+  gap: 16px;
+}
+
+.users-page-form label,
+.users-page-user-actions label {
+  display: grid;
+  gap: 7px;
+}
+
+.users-page-form label > span,
+.users-page-user-actions label > span {
+  color: #344054;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.users-page-form input,
+.users-page-form select,
+.users-page-user-actions select,
+.users-page-list-header select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  color: #101828;
+  font: inherit;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 9px;
+  outline: none;
+}
+
+.users-page-form input:focus,
+.users-page-form select:focus,
+.users-page-user-actions select:focus,
+.users-page-list-header select:focus {
+  border-color: #b8782d;
+  box-shadow: 0 0 0 3px rgba(184, 120, 45, 0.15);
+}
+
+.users-page-form small {
+  color: #667085;
+}
+
+.users-page-password-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.users-page-password-field button {
+  padding: 0 12px;
+  color: #344054;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.users-page-list-panel {
+  min-width: 0;
+}
+
+.users-page-list-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.users-page-list-header h3,
+.users-page-list-header p {
+  margin: 0;
+}
+
+.users-page-list-header p {
+  margin-top: 5px;
+  color: #667085;
+}
+
+.users-page-list-header select {
+  width: auto;
+  min-width: 170px;
+}
+
+.users-page-card-list {
+  display: grid;
+  gap: 14px;
+}
+
+.users-page-user-card {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+}
+
+.users-page-user-inactive {
+  opacity: 0.72;
+  background: #f8f8f7;
+}
+
+.users-page-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  color: #65451f;
+  font-weight: 800;
+  background: #f5d9ae;
+  border-radius: 50%;
+}
+
+.users-page-user-main {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.users-page-user-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.users-page-user-heading > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.users-page-user-heading strong {
+  color: #223029;
+  font-size: 16px;
+}
+
+.users-page-user-heading small {
+  flex-basis: 100%;
+  color: #667085;
+  overflow-wrap: anywhere;
+}
+
+.users-page-current-badge {
+  display: inline-flex;
+  padding: 3px 7px;
+  color: #6941c6;
+  font-size: 10px;
+  font-weight: 800;
+  background: #f4ebff;
+  border-radius: 999px;
+}
+
+.users-page-state {
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 999px;
+}
+
+.users-page-state.active {
+  color: #176b3a;
+  background: #dcfae6;
+}
+
+.users-page-state.inactive {
+  color: #475467;
+  background: #eaecf0;
+}
+
+.users-page-user-meta {
+  color: #667085;
+  font-size: 12px;
+}
+
+.users-page-user-actions {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+}
+
+.users-page-user-actions label {
+  min-width: 170px;
+}
+
+.users-page-user-actions button {
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.users-page-deactivate-button {
+  color: #b42318;
+  background: #fff6f5;
+  border: 1px solid #fecdca;
+}
+
+.users-page-reactivate-button {
+  color: #176b3a;
+  background: #ecfdf3;
+  border: 1px solid #abefc6;
+}
+
+.users-page-user-actions button:disabled,
+.users-page-user-actions select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.users-page-denied {
+  display: grid;
+  gap: 8px;
+  max-width: 620px;
+}
+
+.users-page-denied strong {
+  color: #b42318;
+  font-size: 18px;
+}
+
+.users-page-denied p {
+  margin: 0;
+  color: #667085;
+}
+
+@media (max-width: 1100px) {
+  .users-page-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .users-page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .users-page-form-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 680px) {
+  .users-page-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .users-page-list-header,
+  .users-page-user-heading,
+  .users-page-user-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .users-page-user-card {
+    grid-template-columns: 1fr;
+  }
+
+  .users-page-list-header select,
+  .users-page-user-actions label {
+    width: 100%;
+  }
+}

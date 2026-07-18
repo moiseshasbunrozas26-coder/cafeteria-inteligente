@@ -21,7 +21,6 @@ import { RecipesPage } from './RecipesPage';
 import { SalesPage } from './SalesPage';
 import { TablesPage } from './TablesPage';
 import { ReservationsPage } from './ReservationsPage';
-import { UsersPage } from './UsersPage';
 import {
   LoginPage,
   type Session,
@@ -199,7 +198,7 @@ function getGreeting() {
   return 'Buenas noches';
 }
 
-export function ModulePage({
+function ModulePage({
   title,
   description,
   icon,
@@ -981,13 +980,6 @@ function App() {
       }}
     />
   );
-  const usersPage = (
-    <UsersPage
-      accessToken={session.accessToken}
-      currentUserId={session.user.id}
-      canManage={session.user.role === 'ADMIN'}
-    />
-  );
   return (
     <div className="app-layout">
       <aside className="sidebar">
@@ -1097,9 +1089,16 @@ function App() {
             path="/reservas"
             element={reservationsPage}
           />
+
           <Route
             path="/usuarios"
-            element={usersPage}
+            element={
+              <ModulePage
+                title="Usuarios"
+                description="Administración de cuentas, roles y permisos."
+                icon="👥"
+              />
+            }
           />
 
           <Route
