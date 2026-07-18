@@ -17,7 +17,6 @@ import { apiRequest } from './api';
 import { ProductsPage } from './ProductsPage';
 import { IngredientsPage } from './IngredientsPage';
 import { InventoryPage } from './InventoryPage';
-import { RecipesPage } from './RecipesPage';
 import {
   LoginPage,
   type Session,
@@ -103,11 +102,6 @@ const menuItems = [
     label: 'Productos',
     path: '/productos',
     icon: '☕',
-  },
-  {
-    label: 'Recetas',
-    path: '/recetas',
-    icon: '📋',
   },
   {
     label: 'Ingredientes',
@@ -1020,13 +1014,6 @@ function App() {
     />
   );
 
-  const recipesPage = (
-    <RecipesPage
-      accessToken={session.accessToken}
-      canManage={session.user.role === 'ADMIN'}
-    />
-  );
-
   const ingredientsPage = (
     <IngredientsPage
       accessToken={session.accessToken}
@@ -1205,10 +1192,6 @@ function App() {
           <Route
             path="/productos"
             element={productsPage}
-          />
-          <Route
-            path="/recetas"
-            element={recipesPage}
           />
 
           <Route
