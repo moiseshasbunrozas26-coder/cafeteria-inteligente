@@ -32,13 +32,6 @@ enum SaleStatus {
   CANCELLED
 }
 
-enum ReservationStatus {
-  PENDING
-  CONFIRMED
-  COMPLETED
-  CANCELLED
-}
-
 enum TableStatus {
   AVAILABLE
   OCCUPIED
@@ -114,15 +107,14 @@ model InventoryMovement {
 }
 
 model CafeTable {
-  id           Int           @id @default(autoincrement())
-  number       Int           @unique
-  capacity     Int
-  status       TableStatus   @default(AVAILABLE)
-  active       Boolean       @default(true)
-  sales        Sale[]
-  reservations Reservation[]
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  id        Int         @id @default(autoincrement())
+  number    Int         @unique
+  capacity  Int
+  status    TableStatus @default(AVAILABLE)
+  active    Boolean     @default(true)
+  sales     Sale[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 }
 
 model Sale {
@@ -150,23 +142,4 @@ model SaleItem {
 
   @@index([saleId])
   @@index([productId])
-}
-
-model Reservation {
-  id              Int               @id @default(autoincrement())
-  customerName    String
-  customerPhone   String
-  customerEmail   String?
-  people          Int
-  reservationAt   DateTime
-  durationMinutes Int               @default(90)
-  status          ReservationStatus @default(PENDING)
-  notes           String?
-  tableId         Int
-  table           CafeTable         @relation(fields: [tableId], references: [id])
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-
-  @@index([tableId, reservationAt])
-  @@index([reservationAt, status])
 }

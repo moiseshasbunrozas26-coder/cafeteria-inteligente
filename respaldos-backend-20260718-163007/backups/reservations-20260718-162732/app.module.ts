@@ -12,7 +12,6 @@ import { UsersModule } from './users/users.module.js';
 import { InventoryMovementsModule } from './inventory-movements/inventory-movements.module.js';
 import { SalesModule } from './sales/sales.module.js';
 import { TablesModule } from './tables/tables.module.js';
-import { ReservationsModule } from './reservations/reservations.module.js';
 
 @Module({
   imports: [
@@ -29,7 +28,6 @@ import { ReservationsModule } from './reservations/reservations.module.js';
     InventoryMovementsModule,
     SalesModule,
     TablesModule,
-    ReservationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
