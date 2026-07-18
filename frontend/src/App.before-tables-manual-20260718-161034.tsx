@@ -19,7 +19,6 @@ import { IngredientsPage } from './IngredientsPage';
 import { InventoryPage } from './InventoryPage';
 import { RecipesPage } from './RecipesPage';
 import { SalesPage } from './SalesPage';
-import { TablesPage } from './TablesPage';
 import {
   LoginPage,
   type Session,
@@ -955,18 +954,80 @@ function App() {
     />
   );
   const tablesPage = (
-    <TablesPage
-      accessToken={session.accessToken}
-      canCreateDelete={session.user.role === 'ADMIN'}
-      canUpdate={
-        session.user.role === 'ADMIN' ||
-        session.user.role === 'STAFF'
-      }
-      onTablesChanged={() => {
-        void loadDashboardData();
-      }}
-    />
+    <ModulePage
+      title="Mesas"
+      description="Disponibilidad, capacidad y estado de las mesas."
+      icon="🪑"
+    >
+      <section className="panel">
+        <div className="panel-header">
+          <div>
+            <h3>Mesas del local</h3>
+
+            <p>
+              Disponibilidad actual del
+              salón
+            </p>
+          </div>
+
+          <button
+            className="primary-button"
+            type="button"
+          >
+            + Nueva mesa
+          </button>
+        </div>
+
+        {dashboardData.tables.length ===
+        0 ? (
+          <div className="empty-state">
+            No hay mesas registradas.
+          </div>
+        ) : (
+          <div className="table-grid">
+            {dashboardData.tables.map(
+              (table) => (
+                <div
+                  className="table-card"
+                  key={table.id}
+                >
+                  <div className="table-number">
+                    {table.number}
+                  </div>
+
+                  <div>
+                    <strong>
+                      Mesa {table.number}
+                    </strong>
+
+                    <p>
+                      {table.capacity}{' '}
+                      personas
+                    </p>
+                  </div>
+
+                  <span
+                    className={`status ${
+                      tableStatusClasses[
+                        table.status
+                      ]
+                    }`}
+                  >
+                    {
+                      tableStatusLabels[
+                        table.status
+                      ]
+                    }
+                  </span>
+                </div>
+              ),
+            )}
+          </div>
+        )}
+      </section>
+    </ModulePage>
   );
+
   return (
     <div className="app-layout">
       <aside className="sidebar">

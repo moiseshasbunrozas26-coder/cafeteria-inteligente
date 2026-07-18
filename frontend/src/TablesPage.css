@@ -1,0 +1,401 @@
+.tables-message {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid;
+  border-radius: 12px;
+}
+
+.tables-success {
+  color: #176b3a;
+  background: #ecfdf3;
+  border-color: #abefc6;
+}
+
+.tables-error {
+  color: #b42318;
+  background: #fef3f2;
+  border-color: #fecdca;
+}
+
+.tables-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.tables-summary-card {
+  display: grid;
+  gap: 7px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e6e9e7;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(31, 43, 36, 0.04);
+}
+
+.tables-summary-card span {
+  color: #667085;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.tables-summary-card strong {
+  color: #223029;
+  font-size: 26px;
+}
+
+.tables-summary-card small {
+  color: #818b85;
+}
+
+.tables-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.tables-create-panel {
+  position: sticky;
+  top: 24px;
+}
+
+.tables-form {
+  display: grid;
+  gap: 16px;
+}
+
+.tables-form label,
+.cafetable-edit-grid label,
+.cafecafetable-status-selector {
+  display: grid;
+  gap: 7px;
+}
+
+.tables-form label span,
+.cafetable-edit-grid label span,
+.cafecafetable-status-selector span {
+  color: #344054;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.tables-form input,
+.tables-form select,
+.cafetable-edit-grid input,
+.cafecafetable-status-selector select,
+.tables-filters select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  color: #101828;
+  font: inherit;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 9px;
+  outline: none;
+}
+
+.tables-form input:focus,
+.tables-form select:focus,
+.cafetable-edit-grid input:focus,
+.cafecafetable-status-selector select:focus,
+.tables-filters select:focus {
+  border-color: #b8782d;
+  box-shadow: 0 0 0 3px rgba(184, 120, 45, 0.15);
+}
+
+.tables-list-panel {
+  min-width: 0;
+}
+
+.tables-list-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tables-list-heading h3,
+.tables-list-heading p {
+  margin: 0;
+}
+
+.tables-list-heading p {
+  margin-top: 5px;
+  color: #667085;
+}
+
+.tables-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tables-inactive-toggle {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  white-space: nowrap;
+  color: #475467;
+  font-size: 13px;
+}
+
+.tables-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.cafetable-card {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-top: 4px solid #98a2b3;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(31, 43, 36, 0.04);
+}
+
+.cafetable-available {
+  border-top-color: #32a060;
+}
+
+.cafetable-occupied {
+  border-top-color: #dc6803;
+}
+
+.cafetable-reserved {
+  border-top-color: #7f56d9;
+}
+
+.cafetable-out_of_service {
+  border-top-color: #667085;
+}
+
+.cafetable-inactive {
+  opacity: 0.68;
+  background: #f5f5f4;
+}
+
+.cafecafetable-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.cafetable-number {
+  display: grid;
+  gap: 2px;
+}
+
+.cafetable-number span {
+  color: #667085;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cafetable-number strong {
+  color: #223029;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.cafetable-status {
+  display: inline-flex;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 999px;
+}
+
+.cafetable-status-available {
+  color: #176b3a;
+  background: #dcfae6;
+}
+
+.cafetable-status-occupied {
+  color: #b54708;
+  background: #fef0c7;
+}
+
+.cafetable-status-reserved {
+  color: #6941c6;
+  background: #f4ebff;
+}
+
+.cafetable-status-out_of_service {
+  color: #475467;
+  background: #eaecf0;
+}
+
+.cafetable-capacity {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+}
+
+.cafetable-capacity > span {
+  font-size: 24px;
+}
+
+.cafetable-capacity div {
+  display: grid;
+  gap: 3px;
+}
+
+.cafetable-capacity small {
+  color: #667085;
+}
+
+.cafetable-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cafecafetable-card-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 2px;
+}
+
+.cafecafetable-card-actions button {
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cafetable-edit-button,
+.cafetable-cancel-button {
+  color: #344054;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+}
+
+.cafetable-save-button,
+.cafetable-reactivate-button {
+  color: #176b3a;
+  background: #ecfdf3;
+  border: 1px solid #abefc6;
+}
+
+.cafetable-deactivate-button {
+  color: #b42318;
+  background: #fff6f5;
+  border: 1px solid #fecdca;
+}
+
+.cafecafetable-card-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1200px) {
+  .tables-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tables-card-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 920px) {
+  .tables-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tables-create-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 680px) {
+  .tables-summary-grid,
+  .tables-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tables-list-heading,
+  .tables-filters {
+    align-items: stretch;
+    flex-direction: column;
+  }
+/* Evita conflictos con los estilos antiguos de App.css */
+.tables-card-grid .cafetable-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  grid-template-columns: none !important;
+  gap: 16px !important;
+  min-width: 0;
+  height: auto;
+}
+
+.tables-card-grid .cafecafetable-card-top {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 16px;
+  width: 100%;
+}
+
+.tables-card-grid .cafetable-number {
+  display: grid !important;
+  gap: 3px;
+  width: auto !important;
+}
+
+.tables-card-grid .cafetable-status {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.tables-card-grid .cafetable-capacity {
+  display: flex !important;
+  align-items: center !important;
+  grid-template-columns: none !important;
+  gap: 12px;
+  width: 100%;
+}
+
+.tables-card-grid .cafetable-capacity div {
+  display: grid !important;
+  gap: 3px;
+}
+
+.tables-card-grid .cafecafetable-status-selector {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 7px;
+  width: 100%;
+}
+
+.tables-card-grid .cafecafetable-status-selector select {
+  width: 100% !important;
+  min-width: 0;
+}
+
+.tables-card-grid .cafecafetable-card-actions {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px;
+  width: 100%;
+}
+
+.tables-card-grid .cafecafetable-card-actions button {
+  min-width: 84px;
+}
