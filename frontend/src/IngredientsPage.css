@@ -1,0 +1,221 @@
+.ingredients-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 390px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.ingredient-form-panel {
+  position: sticky;
+  top: 24px;
+}
+
+.ingredient-form {
+  display: grid;
+  gap: 18px;
+}
+
+.ingredient-field {
+  display: grid;
+  gap: 8px;
+}
+
+.ingredient-field span,
+.ingredient-checkbox span {
+  color: #344054;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ingredient-field input,
+.ingredient-field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  color: #101828;
+  font: inherit;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  outline: none;
+}
+
+.ingredient-field input:focus,
+.ingredient-field select:focus {
+  border-color: #b8782d;
+  box-shadow: 0 0 0 3px rgba(184, 120, 45, 0.15);
+}
+
+.ingredient-stock-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.ingredient-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.ingredient-checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: #b8782d;
+}
+
+.ingredient-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.ingredient-message {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid;
+  border-radius: 12px;
+}
+
+.ingredient-success {
+  color: #176b3a;
+  background: #ecfdf3;
+  border-color: #abefc6;
+}
+
+.ingredient-error {
+  color: #b42318;
+  background: #fef3f2;
+  border-color: #fecdca;
+}
+
+.ingredients-list-panel {
+  min-width: 0;
+}
+
+.ingredients-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ingredients-table {
+  width: 100%;
+  min-width: 940px;
+  border-collapse: collapse;
+}
+
+.ingredients-table th,
+.ingredients-table td {
+  padding: 15px 12px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.ingredients-table th {
+  color: #667085;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ingredients-table tbody tr:hover {
+  background: #fafaf9;
+}
+
+.ingredient-name-cell {
+  display: grid;
+  gap: 4px;
+}
+
+.ingredient-name-cell small {
+  color: #667085;
+}
+
+.ingredient-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+.ingredient-status.normal {
+  color: #176b3a;
+  background: #dcfae6;
+}
+
+.ingredient-status.low {
+  color: #b54708;
+  background: #fef0c7;
+}
+
+.ingredient-status.inactive {
+  color: #667085;
+  background: #f2f4f7;
+}
+
+.ingredient-row-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.ingredient-row-actions button {
+  padding: 8px 11px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ingredient-edit-button {
+  color: #344054;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+}
+
+.ingredient-disable-button {
+  color: #b42318;
+  background: #fff6f5;
+  border: 1px solid #fecdca;
+}
+
+.ingredient-enable-button {
+  color: #176b3a;
+  background: #ecfdf3;
+  border: 1px solid #abefc6;
+}
+
+.ingredient-row-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1150px) {
+  .ingredients-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ingredient-form-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 650px) {
+  .ingredient-stock-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ingredient-form-actions,
+  .ingredient-row-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

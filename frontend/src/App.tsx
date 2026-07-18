@@ -15,6 +15,7 @@ import {
 import './App.css';
 import { apiRequest } from './api';
 import { ProductsPage } from './ProductsPage';
+import { IngredientsPage } from './IngredientsPage';
 import {
   LoginPage,
   type Session,
@@ -1013,78 +1014,12 @@ function App() {
   );
 
   const ingredientsPage = (
-    <ModulePage
-      title="Ingredientes"
-      description="Gestión de materias primas y unidades de medida."
-      icon="🥛"
-    >
-      <section className="panel sales-panel">
-        <div className="panel-header">
-          <div>
-            <h3>
-              Ingredientes registrados
-            </h3>
-
-            <p>
-              Materias primas utilizadas
-              en la cafetería
-            </p>
-          </div>
-
-          <button
-            className="primary-button"
-            type="button"
-          >
-            + Nuevo ingrediente
-          </button>
-        </div>
-
-        {dashboardData.ingredients
-          .length === 0 ? (
-          <div className="empty-state">
-            No hay ingredientes
-            registrados.
-          </div>
-        ) : (
-          <div className="sales-table">
-            <div className="sales-row sales-head">
-              <span>ID</span>
-              <span>Ingrediente</span>
-              <span>Unidad</span>
-              <span>Stock</span>
-            </div>
-
-            {dashboardData.ingredients.map(
-              (ingredient) => (
-                <div
-                  className="sales-row"
-                  key={ingredient.id}
-                >
-                  <span>
-                    #{ingredient.id}
-                  </span>
-
-                  <strong>
-                    {ingredient.name}
-                  </strong>
-
-                  <span>
-                    {ingredient.unit}
-                  </span>
-
-                  <strong>
-                    {
-                      ingredient.currentStock
-                    }{' '}
-                    {ingredient.unit}
-                  </strong>
-                </div>
-              ),
-            )}
-          </div>
-        )}
-      </section>
-    </ModulePage>
+    <IngredientsPage
+      accessToken={session.accessToken}
+      onIngredientsChanged={() => {
+        void loadDashboardData();
+      }}
+    />
   );
 
   const inventoryPage = (
