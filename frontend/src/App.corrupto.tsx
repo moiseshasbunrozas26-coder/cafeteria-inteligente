@@ -91,42 +91,42 @@ const menuItems = [
   {
     label: 'Dashboard',
     path: '/dashboard',
-    icon: '▦',
+    icon: 'â–¦',
   },
   {
     label: 'Ventas',
     path: '/ventas',
-    icon: '🛒',
+    icon: 'ðŸ›’',
   },
   {
     label: 'Productos',
     path: '/productos',
-    icon: '☕',
+    icon: 'â˜•',
   },
   {
     label: 'Ingredientes',
     path: '/ingredientes',
-    icon: '🥛',
+    icon: 'ðŸ¥›',
   },
   {
     label: 'Inventario',
     path: '/inventario',
-    icon: '📦',
+    icon: 'ðŸ“¦',
   },
   {
     label: 'Mesas',
     path: '/mesas',
-    icon: '🪑',
+    icon: 'ðŸª‘',
   },
   {
     label: 'Reservas',
     path: '/reservas',
-    icon: '📅',
+    icon: 'ðŸ“…',
   },
   {
     label: 'Usuarios',
     path: '/usuarios',
-    icon: '👥',
+    icon: 'ðŸ‘¥',
   },
 ];
 
@@ -185,7 +185,7 @@ function getGreeting() {
   const hour = new Date().getHours();
 
   if (hour < 12) {
-    return 'Buenos días';
+    return 'Buenos dÃ­as';
   }
 
   if (hour < 20) {
@@ -221,13 +221,13 @@ function ModulePage({
         <section className="panel">
           <div className="empty-state">
             <strong>
-              Módulo en construcción
+              MÃ³dulo en construcciÃ³n
             </strong>
 
             <p>
-              La navegación ya está funcionando.
-              Este módulo se conectará con la API
-              en los próximos pasos.
+              La navegaciÃ³n ya estÃ¡ funcionando.
+              Este mÃ³dulo se conectarÃ¡ con la API
+              en los prÃ³ximos pasos.
             </p>
           </div>
         </section>
@@ -511,7 +511,7 @@ function App() {
 
           <p>
             Este es el resumen actual de
-            tu cafetería.
+            tu cafeterÃ­a.
           </p>
         </div>
 
@@ -526,7 +526,7 @@ function App() {
           >
             {loading
               ? 'Actualizando...'
-              : '↻ Actualizar'}
+              : 'â†» Actualizar'}
           </button>
 
           <button
@@ -555,7 +555,7 @@ function App() {
       <section className="summary-grid">
         <article className="summary-card">
           <span className="card-icon">
-            💰
+            ðŸ’°
           </span>
 
           <div>
@@ -583,7 +583,7 @@ function App() {
 
         <article className="summary-card">
           <span className="card-icon">
-            ☕
+            â˜•
           </span>
 
           <div>
@@ -606,7 +606,7 @@ function App() {
 
         <article className="summary-card">
           <span className="card-icon">
-            📦
+            ðŸ“¦
           </span>
 
           <div>
@@ -632,7 +632,7 @@ function App() {
 
         <article className="summary-card">
           <span className="card-icon">
-            🪑
+            ðŸª‘
           </span>
 
           <div>
@@ -767,7 +767,7 @@ function App() {
                       {
                         principalIngredient.unit
                       }{' '}
-                      · mínimo{' '}
+                      Â· mÃ­nimo{' '}
                       {
                         ingredientMinimumStock
                       }
@@ -801,20 +801,20 @@ function App() {
                 <span>
                   {ingredientIsLow
                     ? '!'
-                    : '✓'}
+                    : 'âœ“'}
                 </span>
 
                 <div>
                   <strong>
                     {ingredientIsLow
-                      ? 'Se necesita reposición'
+                      ? 'Se necesita reposiciÃ³n'
                       : 'Inventario saludable'}
                   </strong>
 
                   <p>
                     {ingredientIsLow
-                      ? `${principalIngredient.name} llegó al stock mínimo.`
-                      : 'No hay ingredientes bajo el stock mínimo.'}
+                      ? `${principalIngredient.name} llegÃ³ al stock mÃ­nimo.`
+                      : 'No hay ingredientes bajo el stock mÃ­nimo.'}
                   </p>
                 </div>
               </div>
@@ -834,7 +834,7 @@ function App() {
             <h3>Ventas recientes</h3>
 
             <p>
-              Últimas operaciones
+              Ãšltimas operaciones
               registradas
             </p>
           </div>
@@ -852,7 +852,7 @@ function App() {
 
         {recentSales.length === 0 ? (
           <div className="empty-state">
-            Todavía no hay ventas
+            TodavÃ­a no hay ventas
             registradas.
           </div>
         ) : (
@@ -875,7 +875,7 @@ function App() {
                   {sale.items
                     .map(
                       (item) =>
-                        `${item.quantity} × ${item.product.name}`,
+                        `${item.quantity} Ã— ${item.product.name}`,
                     )
                     .join(', ')}
                 </span>
@@ -914,7 +914,7 @@ function App() {
     <ModulePage
       title="Ventas"
       description="Historial de ventas y pedidos registrados."
-      icon="🛒"
+      icon="ðŸ›’"
     >
       <section className="panel sales-panel">
         <div className="panel-header">
@@ -923,7 +923,7 @@ function App() {
 
             <p>
               Operaciones registradas en
-              la cafetería
+              la cafeterÃ­a
             </p>
           </div>
 
@@ -969,7 +969,7 @@ function App() {
                     {sale.items
                       .map(
                         (item) =>
-                          `${item.quantity} × ${item.product.name}`,
+                          `${item.quantity} Ã— ${item.product.name}`,
                       )
                       .join(', ')}
                   </span>
@@ -1022,7 +1022,6 @@ function App() {
       }}
     />
   );
-
   const inventoryPage = (
     <InventoryPage
       accessToken={session.accessToken}
@@ -1032,11 +1031,12 @@ function App() {
       }}
     />
   );
+
   const tablesPage = (
     <ModulePage
       title="Mesas"
       description="Disponibilidad, capacidad y estado de las mesas."
-      icon="🪑"
+      icon="ðŸª‘"
     >
       <section className="panel">
         <div className="panel-header">
@@ -1045,7 +1045,7 @@ function App() {
 
             <p>
               Disponibilidad actual del
-              salón
+              salÃ³n
             </p>
           </div>
 
@@ -1112,11 +1112,11 @@ function App() {
       <aside className="sidebar">
         <div className="brand">
           <div className="brand-icon">
-            ☕
+            â˜•
           </div>
 
           <div>
-            <h1>Cafetería</h1>
+            <h1>CafeterÃ­a</h1>
             <span>Inteligente</span>
           </div>
         </div>
@@ -1159,10 +1159,10 @@ function App() {
             className="logout-button"
             type="button"
             onClick={handleLogout}
-            title="Cerrar sesión"
-            aria-label="Cerrar sesión"
+            title="Cerrar sesiÃ³n"
+            aria-label="Cerrar sesiÃ³n"
           >
-            ↪
+            â†ª
           </button>
         </div>
       </aside>
@@ -1214,8 +1214,8 @@ function App() {
             element={
               <ModulePage
                 title="Reservas"
-                description="Calendario y administración de reservas."
-                icon="📅"
+                description="Calendario y administraciÃ³n de reservas."
+                icon="ðŸ“…"
               />
             }
           />
@@ -1225,8 +1225,8 @@ function App() {
             element={
               <ModulePage
                 title="Usuarios"
-                description="Administración de cuentas, roles y permisos."
-                icon="👥"
+                description="AdministraciÃ³n de cuentas, roles y permisos."
+                icon="ðŸ‘¥"
               />
             }
           />

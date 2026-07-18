@@ -1032,6 +1032,7 @@ function App() {
       }}
     />
   );
+
   const tablesPage = (
     <ModulePage
       title="Mesas"

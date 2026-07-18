@@ -16,7 +16,6 @@ import './App.css';
 import { apiRequest } from './api';
 import { ProductsPage } from './ProductsPage';
 import { IngredientsPage } from './IngredientsPage';
-import { InventoryPage } from './InventoryPage';
 import {
   LoginPage,
   type Session,
@@ -1024,14 +1023,102 @@ function App() {
   );
 
   const inventoryPage = (
-    <InventoryPage
-      accessToken={session.accessToken}
-      canManage={session.user.role === 'ADMIN'}
-      onInventoryChanged={() => {
-        void loadDashboardData();
-      }}
-    />
+    <ModulePage
+      title="Inventario"
+      description="Control de existencias, stock mínimo y reposición."
+      icon="📦"
+    >
+      <section className="panel sales-panel">
+        <div className="panel-header">
+          <div>
+            <h3>Control de inventario</h3>
+
+            <p>
+              Estado actual de las
+              existencias
+            </p>
+          </div>
+
+          <button
+            className="primary-button"
+            type="button"
+          >
+            + Registrar movimiento
+          </button>
+        </div>
+
+        {dashboardData.ingredients
+          .length === 0 ? (
+          <div className="empty-state">
+            No hay inventario registrado.
+          </div>
+        ) : (
+          <div className="sales-table">
+            <div className="sales-row sales-head">
+              <span>Ingrediente</span>
+              <span>Stock actual</span>
+              <span>Stock mínimo</span>
+              <span>Estado</span>
+            </div>
+
+            {dashboardData.ingredients.map(
+              (ingredient) => {
+                const currentStock =
+                  Number(
+                    ingredient.currentStock,
+                  );
+
+                const minimumStock =
+                  Number(
+                    ingredient.minimumStock,
+                  );
+
+                const isLow =
+                  currentStock <=
+                  minimumStock;
+
+                return (
+                  <div
+                    className="sales-row"
+                    key={ingredient.id}
+                  >
+                    <strong>
+                      {ingredient.name}
+                    </strong>
+
+                    <span>
+                      {currentStock}{' '}
+                      {ingredient.unit}
+                    </span>
+
+                    <span>
+                      {minimumStock}{' '}
+                      {ingredient.unit}
+                    </span>
+
+                    <span>
+                      <small
+                        className={
+                          isLow
+                            ? 'sale-status'
+                            : 'completed'
+                        }
+                      >
+                        {isLow
+                          ? 'Stock bajo'
+                          : 'Normal'}
+                      </small>
+                    </span>
+                  </div>
+                );
+              },
+            )}
+          </div>
+        )}
+      </section>
+    </ModulePage>
   );
+
   const tablesPage = (
     <ModulePage
       title="Mesas"
