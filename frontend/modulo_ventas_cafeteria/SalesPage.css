@@ -1,0 +1,254 @@
+.sales-alert {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid;
+  border-radius: 12px;
+}
+
+.sales-success {
+  color: #176b3a;
+  background: #ecfdf3;
+  border-color: #abefc6;
+}
+
+.sales-error {
+  color: #b42318;
+  background: #fef3f2;
+  border-color: #fecdca;
+}
+
+.sales-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.sales-summary-card {
+  display: grid;
+  gap: 7px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e6e9e7;
+  border-radius: 14px;
+}
+
+.sales-summary-card span,
+.sales-picker span,
+.sales-checkout span,
+.sales-receipt span {
+  color: #667085;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sales-summary-card strong {
+  font-size: 26px;
+}
+
+.sales-summary-card small {
+  color: #818b85;
+}
+
+.sales-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, .7fr);
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.sales-receipt-panel {
+  position: sticky;
+  top: 24px;
+}
+
+.sales-picker {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.sales-picker label {
+  display: grid;
+  gap: 8px;
+}
+
+.sales-picker select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  font: inherit;
+  background: #fff;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+}
+
+.sales-empty-cart {
+  margin-top: 18px;
+}
+
+.sales-cart {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.sales-cart-row {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) auto auto auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  background: #fafbfa;
+  border: 1px solid #e4e8e5;
+  border-radius: 12px;
+}
+
+.sales-cart-row > div:first-child {
+  display: grid;
+  gap: 4px;
+}
+
+.sales-cart-row small {
+  color: #667085;
+}
+
+.sales-quantity {
+  display: grid;
+  grid-template-columns: 34px 58px 34px;
+  gap: 6px;
+}
+
+.sales-quantity button,
+.sales-quantity input {
+  height: 34px;
+  box-sizing: border-box;
+  font: inherit;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+}
+
+.sales-remove {
+  padding: 8px 10px;
+  color: #b42318;
+  font-weight: 700;
+  background: #fff6f5;
+  border: 1px solid #fecdca;
+  border-radius: 8px;
+}
+
+.sales-checkout {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #eaecf0;
+}
+
+.sales-checkout div {
+  display: grid;
+  gap: 4px;
+}
+
+.sales-checkout strong {
+  font-size: 25px;
+}
+
+.sales-receipt {
+  display: grid;
+  gap: 14px;
+}
+
+.sales-receipt > div,
+.sales-receipt p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+}
+
+.sales-receipt p {
+  padding: 10px 0;
+  border-bottom: 1px dashed #d0d5dd;
+}
+
+.sales-receipt-total strong {
+  font-size: 22px;
+}
+
+.sales-table-wrap {
+  overflow-x: auto;
+}
+
+.sales-page-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+}
+
+.sales-page-table th,
+.sales-page-table td {
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.sales-page-table th {
+  color: #667085;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.sales-state {
+  display: inline-flex;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+.sales-state.completed {
+  color: #176b3a;
+  background: #dcfae6;
+}
+
+.sales-state.pending {
+  color: #b54708;
+  background: #fef0c7;
+}
+
+.sales-state.cancelled {
+  color: #b42318;
+  background: #fee4e2;
+}
+
+@media (max-width: 1050px) {
+  .sales-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-receipt-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .sales-summary-grid,
+  .sales-picker,
+  .sales-cart-row {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-checkout {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

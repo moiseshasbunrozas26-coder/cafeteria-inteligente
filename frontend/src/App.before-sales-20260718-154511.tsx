@@ -18,7 +18,6 @@ import { ProductsPage } from './ProductsPage';
 import { IngredientsPage } from './IngredientsPage';
 import { InventoryPage } from './InventoryPage';
 import { RecipesPage } from './RecipesPage';
-import { SalesPage } from './SalesPage';
 import {
   LoginPage,
   type Session,
@@ -181,6 +180,12 @@ function formatCurrency(value: number) {
   }).format(value);
 }
 
+function formatDate(date: string) {
+  return new Intl.DateTimeFormat('es-CL', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+  }).format(new Date(date));
+}
 
 function getGreeting() {
   const hour = new Date().getHours();
@@ -910,16 +915,103 @@ function App() {
       </section>
     </>
   );
+
   const salesPage = (
-    <SalesPage
-      accessToken={session.accessToken}
-      onSaleCreated={() => {
-        void loadDashboardData();
-      }}
-    />
+    <ModulePage
+      title="Ventas"
+      description="Historial de ventas y pedidos registrados."
+      icon="🛒"
+    >
+      <section className="panel sales-panel">
+        <div className="panel-header">
+          <div>
+            <h3>Historial de ventas</h3>
+
+            <p>
+              Operaciones registradas en
+              la cafetería
+            </p>
+          </div>
+
+          <button
+            className="primary-button"
+            type="button"
+          >
+            + Nueva venta
+          </button>
+        </div>
+
+        {dashboardData.sales.length ===
+        0 ? (
+          <div className="empty-state">
+            No hay ventas registradas.
+          </div>
+        ) : (
+          <div className="sales-table">
+            <div className="sales-row sales-head">
+              <span>Venta</span>
+              <span>Productos</span>
+              <span>Estado</span>
+              <span>Total</span>
+            </div>
+
+            {dashboardData.sales.map(
+              (sale) => (
+                <div
+                  className="sales-row"
+                  key={sale.id}
+                >
+                  <span>
+                    #{sale.id}
+                    <small>
+                      {' '}
+                      {formatDate(
+                        sale.createdAt,
+                      )}
+                    </small>
+                  </span>
+
+                  <span>
+                    {sale.items
+                      .map(
+                        (item) =>
+                          `${item.quantity} × ${item.product.name}`,
+                      )
+                      .join(', ')}
+                  </span>
+
+                  <span>
+                    <small
+                      className={
+                        sale.status ===
+                        'COMPLETED'
+                          ? 'completed'
+                          : 'sale-status'
+                      }
+                    >
+                      {
+                        saleStatusLabels[
+                          sale.status
+                        ]
+                      }
+                    </small>
+                  </span>
+
+                  <strong>
+                    {formatCurrency(
+                      Number(sale.total),
+                    )}
+                  </strong>
+                </div>
+              ),
+            )}
+          </div>
+        )}
+      </section>
+    </ModulePage>
   );
 
-  const productsPage = (
+ const productsPage = (
     <ProductsPage
       accessToken={session.accessToken}
       onProductsChanged={() => {
