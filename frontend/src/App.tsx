@@ -14,6 +14,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import { apiRequest } from './api';
+import { ProductsPage } from './ProductsPage';
 import {
   LoginPage,
   type Session,
@@ -1002,85 +1003,13 @@ function App() {
     </ModulePage>
   );
 
-  const productsPage = (
-    <ModulePage
-      title="Productos"
-      description="Administración del menú, precios y disponibilidad."
-      icon="☕"
-    >
-      <section className="panel sales-panel">
-        <div className="panel-header">
-          <div>
-            <h3>Productos registrados</h3>
-
-            <p>
-              Productos disponibles para
-              la venta
-            </p>
-          </div>
-
-          <button
-            className="primary-button"
-            type="button"
-          >
-            + Nuevo producto
-          </button>
-        </div>
-
-        {dashboardData.products.length ===
-        0 ? (
-          <div className="empty-state">
-            No hay productos registrados.
-          </div>
-        ) : (
-          <div className="sales-table">
-            <div className="sales-row sales-head">
-              <span>ID</span>
-              <span>Producto</span>
-              <span>Estado</span>
-              <span>Precio</span>
-            </div>
-
-            {dashboardData.products.map(
-              (product) => (
-                <div
-                  className="sales-row"
-                  key={product.id}
-                >
-                  <span>#{product.id}</span>
-
-                  <strong>
-                    {product.name}
-                  </strong>
-
-                  <span>
-                    <small
-                      className={
-                        product.active
-                          ? 'completed'
-                          : 'sale-status'
-                      }
-                    >
-                      {product.active
-                        ? 'Activo'
-                        : 'Inactivo'}
-                    </small>
-                  </span>
-
-                  <strong>
-                    {formatCurrency(
-                      Number(
-                        product.price,
-                      ),
-                    )}
-                  </strong>
-                </div>
-              ),
-            )}
-          </div>
-        )}
-      </section>
-    </ModulePage>
+ const productsPage = (
+    <ProductsPage
+      accessToken={session.accessToken}
+      onProductsChanged={() => {
+        void loadDashboardData();
+      }}
+    />
   );
 
   const ingredientsPage = (
