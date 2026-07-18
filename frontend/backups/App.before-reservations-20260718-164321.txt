@@ -20,7 +20,6 @@ import { InventoryPage } from './InventoryPage';
 import { RecipesPage } from './RecipesPage';
 import { SalesPage } from './SalesPage';
 import { TablesPage } from './TablesPage';
-import { ReservationsPage } from './ReservationsPage';
 import {
   LoginPage,
   type Session,
@@ -968,18 +967,6 @@ function App() {
       }}
     />
   );
-  const reservationsPage = (
-    <ReservationsPage
-      accessToken={session.accessToken}
-      canManage={
-        session.user.role === 'ADMIN' ||
-        session.user.role === 'STAFF'
-      }
-      onReservationsChanged={() => {
-        void loadDashboardData();
-      }}
-    />
-  );
   return (
     <div className="app-layout">
       <aside className="sidebar">
@@ -1085,9 +1072,16 @@ function App() {
             path="/mesas"
             element={tablesPage}
           />
+
           <Route
             path="/reservas"
-            element={reservationsPage}
+            element={
+              <ModulePage
+                title="Reservas"
+                description="Calendario y administración de reservas."
+                icon="📅"
+              />
+            }
           />
 
           <Route
