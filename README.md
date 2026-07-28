@@ -23,10 +23,10 @@ decisiones mediante tecnologías web, analítica de datos e inteligencia artific
 El proyecto utilizará una arquitectura de monolito modular en capas.
 
 - Frontend: React + TypeScript
-- Backend: Java + Spring Boot
+- Backend: Node.js + NestJS + TypeScript
 - Base de datos: PostgreSQL
 - API: REST + JSON
-- Seguridad: Spring Security + JWT
+- Seguridad: guards de NestJS + JWT
 - Analítica de datos: Python + Pandas
 - Machine Learning: Scikit-learn
 - Infraestructura: Docker
